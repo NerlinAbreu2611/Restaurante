@@ -1,0 +1,44 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de usuario (configuraciones personales)
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configuraciones de Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+
+# Archivos temporales
+*.log
+*.cache
+*.dbmdl
+*.pdb
+
+# Publicaciones temporales
+publish/
+
+# Archivos de seguridad o secretos (si los usas)
+*.key
+*.crt
+
+# Paquetes NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Carpetas de respaldo
+Backup*/
+*.bak
+
+# Configuración de Rider o VSCode (si lo usas)
+.idea/
+.vscode/
+
+# Archivos de prueba generados
+TestResults/
