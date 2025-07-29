@@ -252,5 +252,10 @@ namespace WindowsFormsApp2
         {
             agregarFormulario(new MantenimientoEmpleado());
         }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MantenimientoMetodoDePago());
+        }
     }
 }

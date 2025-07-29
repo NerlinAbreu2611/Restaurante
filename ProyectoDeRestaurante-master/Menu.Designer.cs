@@ -527,19 +527,19 @@
             this.dpmMantenimientoRestaurante.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmMantenimientoRestaurante.Name = "dpmMantenimientoRestaurante";
             this.dpmMantenimientoRestaurante.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmMantenimientoRestaurante.Size = new System.Drawing.Size(181, 70);
+            this.dpmMantenimientoRestaurante.Size = new System.Drawing.Size(133, 48);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem1.Text = "Mesas";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem2.Text = "Empleados";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -644,7 +644,7 @@
             this.dpmMantenimientoCxC.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmMantenimientoCxC.Name = "dpmMantenimientoCxC";
             this.dpmMantenimientoCxC.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmMantenimientoCxC.Size = new System.Drawing.Size(187, 70);
+            this.dpmMantenimientoCxC.Size = new System.Drawing.Size(187, 92);
             // 
             // toolStripMenuItem3
             // 
@@ -665,6 +665,7 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(186, 22);
             this.toolStripMenuItem5.Text = "Metodos de pago";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // dpmProcesosCxC
             // 

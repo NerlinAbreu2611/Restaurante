@@ -13,18 +13,17 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
           
-            RepositorioDeEmpleado repositorio = new RepositorioDeEmpleado();
+            //Probar agregar
 
-            //foreach (Empleado em in repositorio.filtrarPorNombreApellidoYEstado("j",true))
-            //{
-            //    Console.WriteLine(em);
-            //} 
+            MetodoDePago m = new MetodoDePago();
+            m.Descripcion = "efectivo";
+            m.Estado = true;
+            m.Id = 1;
+            RepositorioDeMetodoDePago rep = new RepositorioDeMetodoDePago();
 
-            Empleado emp = repositorio.buscarPorId(1);
+            rep.buscarPorDescripcion("e").ForEach(Console.WriteLine);
 
-            repositorio.desahabilitar(emp);
 
-            //if (repositorio.habilitar(clientes[10])) Console.WriteLine("Exito"); 
 
         }
     }
