@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -38,36 +39,63 @@ namespace Mantenimientos
             if (txtNombre.Text.Length == 0) 
             {
                 MessageBox.Show(this, "Debe ingresar el nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 return false;
             }
             if (txtApellido.Text.Length == 0) 
             {
                 MessageBox.Show(this, "Debe ingresar el apellido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 return false;
             }
             if (txtClave.Text.Length == 0) 
             {
                 MessageBox.Show(this, "Debe ingresar la clave", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 return false ;
             }
             if(txtUsuario.Text.Length == 0) 
             {
                 MessageBox.Show(this, "Debe Ingresar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
                 return false;
             }
 
             return true;
         }
+
+        
+        public FormEmpleado(MantenimientoEmpleado formPadre)
+        {
+            InitializeComponent();
+            this.formPadre = formPadre;
+            lblTitulo.Text = "Agregar Empleado";
+            btnProceso.Text = "Agregar";
+            btnProceso.IconChar = FontAwesome.Sharp.IconChar.SquarePlus;
+        }
+
+
+
+        //para modificar
         public FormEmpleado(Empleado emp,MantenimientoEmpleado formPadre)
         {
             InitializeComponent();
             this.emp = emp;
             this.formPadre = formPadre;
             lblTitulo.Text = "Modificar Empleado";
+            cargarCampos();
+            
 
-            txtNombre.Text = emp.Nombre;    
+            btnProceso.Text = "Modificar";
+            btnProceso.IconChar = FontAwesome.Sharp.IconChar.Pen;
+        
+        }
+
+        private void cargarCampos()
+        {
+            txtNombre.Text = emp.Nombre;
             txtApellido.Text = emp.Apellido;
-            txtClave.Text = emp.Clave;  
+            txtClave.Text = emp.Clave;
             txtUsuario.Text = emp.Usuario;
             if (emp.Estado)
             {
@@ -79,14 +107,12 @@ namespace Mantenimientos
                 btnInactivo.Checked = true;
             }
 
-            btnProceso.Text = "Modificar";
-            btnProceso.IconChar = FontAwesome.Sharp.IconChar.Pen;
-        
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+            formPadre.actualizarDataGrid();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -104,26 +130,90 @@ namespace Mantenimientos
 
         }
 
-        private void agregarEmpleado()
+        private void limpiar()
         {
+            txtApellido.Text = "";
+            txtClave.Text = "";
+            txtNombre.Text = "";
+            txtUsuario.Text = "";
+            btnActivo.Checked = false;
+            btnInactivo.Checked = false;
+        }
+
+        private void modificarEmpleado()
+        {
+            emp.Nombre = txtNombre.Text;    
             emp.Apellido = txtApellido.Text;
             emp.Clave = txtClave.Text;  
             emp.Usuario = txtUsuario.Text;
-            
+            if(btnActivo.Checked) emp.Estado = true;
+            else emp.Estado = false;
+
+            if(repositorioDeEmpleado.Actualizar(emp)) 
+            {
+                MessageBox.Show(this, "Actualizacion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                formPadre.actualizarDataGrid();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(this, "Ocurrio un error en la insercion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cargarCampos();
+            }
+        
         }
 
-        private void btnProceso_Click(object sender, EventArgs e)
-        {          
-            if (validarCampos())
+        private RepositorioDeEmpleado repositorioDeEmpleado = new RepositorioDeEmpleado();  
+
+        private void agregarEmpleado()
+        {
+            Empleado empleado = new Empleado();
+            empleado.Nombre = txtNombre.Text;
+            empleado.Apellido = txtApellido.Text;
+            empleado.Clave= txtClave.Text;
+            empleado.Usuario= txtUsuario.Text;
+            if(btnActivo.Checked ) empleado.Estado = true;
+            else empleado.Estado= false;
+
+            if (repositorioDeEmpleado.agregar(empleado))
             {
-                if(btnProceso.Text == "Modificar")
-                {
-
-                }else if(btnProceso.Text == "Agregar")
-                {
-
-                }
+                MessageBox.Show(this, "Insercion exitosa", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpiar();
             }
+            else
+            {
+                MessageBox.Show(this, "Ocurrio un error al agregar el elemento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+
+
+
+        }
+        private void btnProceso_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validarCampos())
+                {
+                    if (btnProceso.Text == "Modificar")
+                    {
+                        modificarEmpleado();
+                    }
+                    else if (btnProceso.Text == "Agregar")
+                    {
+                        agregarEmpleado();
+                    }
+                }
+            }catch (SqlException ex)
+            {
+
+                MessageBox.Show(this, "Este usuario ya esta en uso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

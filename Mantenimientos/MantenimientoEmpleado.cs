@@ -23,7 +23,14 @@ namespace Mantenimientos
 
         }
         private RepositorioDeEmpleado re = new RepositorioDeEmpleado();
+        public void actualizarDataGrid()
+        {
+            txtBusqueda.Text = "";
+            combo.SelectedIndex = 0;
+            cargarDataGrid(re.ObtenerDatos());
+        }
 
+       
         private void cargarDataGrid(List<Empleado> empleados)
         {
 
@@ -128,6 +135,7 @@ namespace Mantenimientos
                             //cargarDataGridEnFuncionDelaOpcion();
                         }
                         //Dejar seleccionada la celda
+                        actualizarDataGrid();
                         dataGrid.ClearSelection();
                         dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
                         dataGrid.CurrentCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -180,6 +188,12 @@ namespace Mantenimientos
                 cargarDataGrid(re.filtrarPorNombreApellidoYEstado(buscar, false));
             }
 
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormEmpleado form = new FormEmpleado(this);
+            form.ShowDialog();
         }
     }
 }

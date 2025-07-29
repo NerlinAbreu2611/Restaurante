@@ -101,6 +101,7 @@
             this.btnMinimizar.Size = new System.Drawing.Size(25, 32);
             this.btnMinimizar.TabIndex = 2;
             this.btnMinimizar.UseVisualStyleBackColor = true;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // lblTitulo
             // 

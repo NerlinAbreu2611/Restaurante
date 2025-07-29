@@ -47,6 +47,7 @@
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregar.Location = new System.Drawing.Point(613, 354);
             this.btnAgregar.Size = new System.Drawing.Size(83, 32);
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label2
             // 
