@@ -220,5 +220,15 @@ namespace Mantenimientos
         {
 
         }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+        }
+
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
+        {
+          
+        }
     }
 }

@@ -557,7 +557,7 @@
             this.dpmMantenimientoInventario.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmMantenimientoInventario.Name = "dropDownMenu1";
             this.dpmMantenimientoInventario.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmMantenimientoInventario.Size = new System.Drawing.Size(188, 114);
+            this.dpmMantenimientoInventario.Size = new System.Drawing.Size(188, 136);
             // 
             // productosToolStripMenuItem
             // 
@@ -582,12 +582,14 @@
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
+            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
             // tiposDeMovimientoToolStripMenuItem
             // 
             this.tiposDeMovimientoToolStripMenuItem.Name = "tiposDeMovimientoToolStripMenuItem";
             this.tiposDeMovimientoToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.tiposDeMovimientoToolStripMenuItem.Text = "Tipos de Movimiento";
+            this.tiposDeMovimientoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeMovimientoToolStripMenuItem_Click);
             // 
             // dpmProcesosInventario
             // 
@@ -644,7 +646,7 @@
             this.dpmMantenimientoCxC.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmMantenimientoCxC.Name = "dpmMantenimientoCxC";
             this.dpmMantenimientoCxC.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmMantenimientoCxC.Size = new System.Drawing.Size(187, 92);
+            this.dpmMantenimientoCxC.Size = new System.Drawing.Size(187, 70);
             // 
             // toolStripMenuItem3
             // 

@@ -257,5 +257,15 @@ namespace WindowsFormsApp2
         {
             agregarFormulario(new MantenimientoMetodoDePago());
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MantenimientoProveedor());
+        }
+
+        private void tiposDeMovimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new Mantenimiento_tipo_de_movimiento());  
+        }
     }
 }

@@ -12,19 +12,25 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-          
-            //Probar agregar
+            //El delegado multicast ejecuta todos los métodos, pero solo devuelve el resultado del último. 
+            tipo_movimiento tipo = new tipo_movimiento();
 
-            MetodoDePago m = new MetodoDePago();
-            m.Descripcion = "efectivo";
-            m.Estado = true;
-            m.Id = 1;
-            RepositorioDeMetodoDePago rep = new RepositorioDeMetodoDePago();
+            tipo.Id = 1;
+            tipo.Descripcion = "salida por venta";
+            tipo.Estado = true;
+            tipo.Afecta_stock = -1;
 
-            rep.buscarPorDescripcion("e").ForEach(Console.WriteLine);
+            Repositorio_tipo_movimiento re = new Repositorio_tipo_movimiento();
 
+    
 
-
+            if(re.Actualizar(tipo))
+            {
+                Console.WriteLine("bien");
+            }
+        
         }
+
     }
+
 }

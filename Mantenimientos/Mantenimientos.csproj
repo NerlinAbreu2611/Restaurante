@@ -83,6 +83,18 @@
     <Compile Include="FormMetPago.Designer.cs">
       <DependentUpon>FormMetPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProveedor.Designer.cs">
+      <DependentUpon>FormProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_tipo_de_movimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_tipo_de_movimiento.Designer.cs">
+      <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,18 @@
     <Compile Include="MantenimientoMetodoDePago.Designer.cs">
       <DependentUpon>MantenimientoMetodoDePago.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantenimientoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoProveedor.Designer.cs">
+      <DependentUpon>MantenimientoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento_tipo_de_movimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento_tipo_de_movimiento.Designer.cs">
+      <DependentUpon>Mantenimiento_tipo_de_movimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCliente.resx">
@@ -135,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMetPago.resx">
       <DependentUpon>FormMetPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProveedor.resx">
+      <DependentUpon>FormProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_tipo_de_movimiento.resx">
+      <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento.resx">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
@@ -153,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MantenimientoMetodoDePago.resx">
       <DependentUpon>MantenimientoMetodoDePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoProveedor.resx">
+      <DependentUpon>MantenimientoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento_tipo_de_movimiento.resx">
+      <DependentUpon>Mantenimiento_tipo_de_movimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
