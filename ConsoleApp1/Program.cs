@@ -13,22 +13,9 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             //El delegado multicast ejecuta todos los métodos, pero solo devuelve el resultado del último. 
-            tipo_movimiento tipo = new tipo_movimiento();
+            RepositorioDeProductos r = new RepositorioDeProductos();
 
-            tipo.Id = 1;
-            tipo.Descripcion = "salida por venta";
-            tipo.Estado = true;
-            tipo.Afecta_stock = -1;
-
-            Repositorio_tipo_movimiento re = new Repositorio_tipo_movimiento();
-
-    
-
-            if(re.Actualizar(tipo))
-            {
-                Console.WriteLine("bien");
-            }
-        
+            r.ObtenerDatos().ForEach(Console.WriteLine);
         }
 
     }

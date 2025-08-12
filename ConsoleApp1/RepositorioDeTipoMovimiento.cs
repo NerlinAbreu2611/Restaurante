@@ -97,8 +97,6 @@ namespace ConsoleApp1
             string sql = "select * from tipo_movimiento where estado = @estado";
             tipo_movimiento tipo = new tipo_movimiento();
             tipo.Estado = estado;
-
-            tipo.Descripcion = "safds";
            
             return listar(_dbHelper.listar(sql, tipo,cargarParametros));
         }

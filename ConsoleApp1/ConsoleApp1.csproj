@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaProducto.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Condicion.cs" />
     <Compile Include="DbHelper.cs" />
@@ -52,17 +53,22 @@
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="MetodoDePago.cs" />
+    <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="RepositorioCategoriaDeProducto.cs" />
     <Compile Include="RepositorioCondicion.cs" />
     <Compile Include="RepositorioDeCliente.cs" />
     <Compile Include="RepositorioDeEmpleado.cs" />
     <Compile Include="RepositorioDeMesa.cs" />
     <Compile Include="RepositorioDeMetodoDePago.cs" />
+    <Compile Include="RepositorioDeProductos.cs" />
     <Compile Include="RepositorioDeProveedor.cs" />
     <Compile Include="RepositorioDeTipoMovimiento.cs" />
+    <Compile Include="Repositorio_de_unidad_de_medida.cs" />
     <Compile Include="tipo_movimiento.cs" />
+    <Compile Include="Unidades_de_medida.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

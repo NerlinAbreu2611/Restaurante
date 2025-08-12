@@ -53,6 +53,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCategoriaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategoriaProducto.Designer.cs">
+      <DependentUpon>FormCategoriaProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,17 +89,47 @@
     <Compile Include="FormMetPago.Designer.cs">
       <DependentUpon>FormMetPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProducto.Designer.cs">
+      <DependentUpon>FormProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormProveedor.Designer.cs">
       <DependentUpon>FormProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUnidadDeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUnidadDeMedida.Designer.cs">
+      <DependentUpon>FormUnidadDeMedida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_tipo_de_movimiento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_tipo_de_movimiento.Designer.cs">
       <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoCategoriaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoCategoriaProducto.Designer.cs">
+      <DependentUpon>MantenimientoCategoriaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoProductos.Designer.cs">
+      <DependentUpon>MantenimientoProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoUnidadDeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoUnidadDeMedida.Designer.cs">
+      <DependentUpon>MantenimientoUnidadDeMedida.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenimiento.cs">
       <SubType>Form</SubType>
@@ -145,6 +181,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCategoriaProducto.resx">
+      <DependentUpon>FormCategoriaProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCliente.resx">
       <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,11 +199,26 @@
     <EmbeddedResource Include="FormMetPago.resx">
       <DependentUpon>FormMetPago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormProducto.resx">
+      <DependentUpon>FormProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProveedor.resx">
       <DependentUpon>FormProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUnidadDeMedida.resx">
+      <DependentUpon>FormUnidadDeMedida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_tipo_de_movimiento.resx">
       <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoCategoriaProducto.resx">
+      <DependentUpon>MantenimientoCategoriaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoProductos.resx">
+      <DependentUpon>MantenimientoProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoUnidadDeMedida.resx">
+      <DependentUpon>MantenimientoUnidadDeMedida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento.resx">
       <DependentUpon>Mantenimiento.cs</DependentUpon>

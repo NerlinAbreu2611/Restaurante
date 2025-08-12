@@ -267,5 +267,20 @@ namespace WindowsFormsApp2
         {
             agregarFormulario(new Mantenimiento_tipo_de_movimiento());  
         }
+
+        private void unidadesDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MantenimientoUnidadDeMedida());
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MantenimientoCategoriaProducto());
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MantenimientoProductos());
+        }
     }
 }

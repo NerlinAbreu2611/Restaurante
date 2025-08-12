@@ -11,32 +11,19 @@ using System.Windows.Forms;
 
 namespace Mantenimientos
 {
-    public partial class MantenimientoMetodoDePago : Mantenimiento
+    public partial class MantenimientoProductos : Mantenimiento
     {
-        public MantenimientoMetodoDePago()
+        public MantenimientoProductos()
         {
             InitializeComponent();
         }
 
-        private void MantenimientoMetodoDePago_Load(object sender, EventArgs e)
+        RepositorioDeProductos repo = new RepositorioDeProductos();
+        Repositorio_de_unidad_de_medida unidad_De_Medida = new Repositorio_de_unidad_de_medida();
+        RepositorioCategoriaDeProducto categoriaDeProducto = new RepositorioCategoriaDeProducto();  
+        private void cargarDataGrid(List<Producto> pro)
         {
-            cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
-            combo.Items.AddRange(new string[] {"Todo","Activos","Inactivos"});
-            combo.SelectedIndex = 0;
-            dataGrid.CellDoubleClick += _CellClick;
 
-        }
-
-
-
-       public void actualizarFormulario()
-        {
-            cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
-            combo.SelectedIndex = 0;
-        }
-        RepositorioDeMetodoDePago repositorioDeMetodoDePago = new RepositorioDeMetodoDePago();
-        private void cargarDataGrid(List<MetodoDePago> metPago)
-        {
             dataGrid.Rows.Clear();
             dataGrid.Columns.Clear();
             //Sirve para quitar primera columna a la izquiera que solo sirve para seleccionar items
@@ -45,9 +32,19 @@ namespace Mantenimientos
             dataGrid.AllowUserToAddRows = false;
             dataGrid.DefaultCellStyle.ForeColor = Color.Black; // Puedes usar cualquier color
             //definir la cabecera de las columnas
-            dataGrid.Columns.Add("colId", "id");
+            dataGrid.Columns.Add("colId", "Id");
+            dataGrid.Columns.Add("colNombre", "Nombre");
             dataGrid.Columns.Add("colDescripcion", "Descripcion");
-            
+            dataGrid.Columns.Add("colCategoria", "categoria");
+            dataGrid.Columns.Add("colUnidad", "Unidad");
+            dataGrid.Columns.Add("colStockActual", "Stock Actual");
+            dataGrid.Columns.Add("colStokMinimo", "Stock Minimo");
+            dataGrid.Columns.Add("colCosto", "Costo");
+            dataGrid.Columns.Add("colVenta", "Venta");
+
+
+
+
 
             //definir la columna de tipo imagen para la edicion de la entidad
             DataGridViewImageColumn imgEdit = new DataGridViewImageColumn();
@@ -63,7 +60,7 @@ namespace Mantenimientos
                                              // imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom; //para que la imagen se ajuste
                                              //imgEstado.Width = 50;
             dataGrid.Columns.Add(imgEstado);//agregar la columna de tipo imagen al data grid
-            //ajusta el ancho de las columnas al datagrid
+                                            //ajusta el ancho de las columnas al datagrid
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //traer la lista de elementos para agregar el data grid
 
@@ -78,54 +75,54 @@ namespace Mantenimientos
 
             //Cargar el data grid con la lista secuencialmente
             //dataGridView1.Columns["colEstado"].DefaultCellStyle.BackColor = Color.LightBlue; //cambiar color a una columna especificada
-            foreach (MetodoDePago m in metPago)
+
+            List<CategoriaProducto> categorias = categoriaDeProducto.ObtenerDatos();
+            List<Unidades_de_medida> unidades = unidad_De_Medida.ObtenerDatos();
+
+            foreach (Producto p in pro)
             {
 
-                if (m.Estado)
+                Unidades_de_medida uni = unidades.Where(u => u.Id == p.Id_unidad).FirstOrDefault();
+                CategoriaProducto ca = categorias.Where(c => c.Id == p.Id_categoria).FirstOrDefault();
+
+                if (p.Estado)
                 {
-                    dataGrid.Rows.Add(m.Id, m.Descripcion, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\eye.png"));
+                    dataGrid.Rows.Add(p.Id_producto,p.Nombre,p.Descripcion,ca.Nombre,uni.Nombre,p.Stock_actual,p.Stock_minimo,p.Precio_costo,p.Precio_venta, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\eye.png"));
                 }
                 else
                 {
-                    dataGrid.Rows.Add(m.Id,m.Descripcion, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\hidden.png"));
+                    dataGrid.Rows.Add(p.Id_producto, p.Nombre, p.Descripcion, ca.Nombre, uni.Nombre, p.Stock_actual, p.Stock_minimo, p.Precio_costo, p.Precio_venta, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\hidden.png"));
                 }
             }
 
+        }
+        private void MantenimientoProductos_Load(object sender, EventArgs e)
+        {
+            cargarDataGrid(repo.ObtenerDatos());
+            combo.Items.AddRange(new String[] { "Todo", "Activos", "Inactivos" });
+            combo.SelectedIndex = 0;
+            dataGrid.CellDoubleClick += _CellClick;
         }
 
         private void combo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String opcion = combo.SelectedItem.ToString();
-
-            if(opcion == "Activos")
+            if (combo.SelectedItem.ToString() == "Todo")
             {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatosPorEstado(true));
-            }else if(opcion == "Inactivos")
+                cargarDataGrid(repo.ObtenerDatos());
+            }else if(combo.SelectedItem.ToString() == "Activos")
             {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatosPorEstado(false));
+                cargarDataGrid(repo.listarPorEstado(true));
             }
             else
             {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
+                cargarDataGrid(repo.listarPorEstado(false));
             }
-            
         }
 
-        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        private void limpiar()
         {
-            String opcion = combo.SelectedItem.ToString();
-            if (opcion == "Activos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarMetPagoPorDescEstado(txtBusqueda.Text,true));
-            }
-            else if (opcion == "Inactivos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarMetPagoPorDescEstado(txtBusqueda.Text, false));
-            }
-            else
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarPorDescripcion(txtBusqueda.Text));
-            }
+            combo.SelectedIndex = 0;
+            txtBusqueda.Text = "";
         }
 
         private void _CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,13 +132,19 @@ namespace Mantenimientos
                 string valor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
                 // MessageBox.Show("Valor clickeado: " + dataGrid.Columns[e.ColumnIndex].HeaderText);
                 int id = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells["colId"].Value);
-                MetodoDePago metodo = repositorioDeMetodoDePago.buscarPorId(id);
+                Producto producto = repo.buscarPorId(id);
 
 
                 if (dataGrid.Columns[e.ColumnIndex].HeaderText == "Editar")
                 {
-                    FormMetPago metodoForm = new FormMetPago(metodo,this);
-                    metodoForm.ShowDialog();    
+                    FormProducto form = new FormProducto(producto);
+                    form.ShowDialog();
+                    cargarDataGrid(repo.ObtenerDatos());
+                    limpiar();
+                    dataGrid.ClearSelection();
+                    dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                    dataGrid.CurrentCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
                 }
                 else if (dataGrid.Columns[e.ColumnIndex].HeaderText == "Estado")
                 {
@@ -156,20 +159,22 @@ namespace Mantenimientos
 
                     if (resultado == DialogResult.Yes)
                     {
-                        if (metodo.Estado)
+                        if (producto.Estado)
                         {
-                            repositorioDeMetodoDePago.desahabilitar(metodo);
+                            repo.desahabilitar(producto);
                         }
                         else
                         {
-                            repositorioDeMetodoDePago.habilitar(metodo);
+                            repo.habilitar(producto);
                         }
 
-                        this.cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
+
                         //Dejar seleccionada la celda
+                        cargarDataGrid(repo.ObtenerDatos());
                         dataGrid.ClearSelection();
                         dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
                         dataGrid.CurrentCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        
                     }
 
 
@@ -178,10 +183,30 @@ namespace Mantenimientos
             }
         }
 
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (combo.SelectedItem.ToString() == "Todo")
+            {
+                cargarDataGrid(repo.listarNombre(txtBusqueda.Text));
+            }
+            else if (combo.SelectedItem.ToString() == "Activos")
+            {
+                cargarDataGrid(repo.listarNombreEstado(txtBusqueda.Text,true));
+            }
+            else
+            {
+                cargarDataGrid(repo.listarNombreEstado(txtBusqueda.Text, false));
+            }
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormMetPago form = new FormMetPago(this);
+            FormProducto form = new FormProducto();
             form.ShowDialog();
+            limpiar();
+            cargarDataGrid(repo.ObtenerDatos());
         }
     }
+    
 }

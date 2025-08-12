@@ -11,32 +11,25 @@ using System.Windows.Forms;
 
 namespace Mantenimientos
 {
-    public partial class MantenimientoMetodoDePago : Mantenimiento
+    public partial class MantenimientoCategoriaProducto : Mantenimiento
     {
-        public MantenimientoMetodoDePago()
+        public MantenimientoCategoriaProducto()
         {
             InitializeComponent();
         }
 
-        private void MantenimientoMetodoDePago_Load(object sender, EventArgs e)
+        private void MantenimientoCategoriaProducto_Load(object sender, EventArgs e)
         {
-            cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
             combo.Items.AddRange(new string[] {"Todo","Activos","Inactivos"});
             combo.SelectedIndex = 0;
+            cargarDataGrid(repo.ObtenerDatos());
             dataGrid.CellDoubleClick += _CellClick;
-
         }
 
-
-
-       public void actualizarFormulario()
+        RepositorioCategoriaDeProducto repo = new RepositorioCategoriaDeProducto();
+        private void cargarDataGrid(List<CategoriaProducto> pro)
         {
-            cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
-            combo.SelectedIndex = 0;
-        }
-        RepositorioDeMetodoDePago repositorioDeMetodoDePago = new RepositorioDeMetodoDePago();
-        private void cargarDataGrid(List<MetodoDePago> metPago)
-        {
+
             dataGrid.Rows.Clear();
             dataGrid.Columns.Clear();
             //Sirve para quitar primera columna a la izquiera que solo sirve para seleccionar items
@@ -45,9 +38,12 @@ namespace Mantenimientos
             dataGrid.AllowUserToAddRows = false;
             dataGrid.DefaultCellStyle.ForeColor = Color.Black; // Puedes usar cualquier color
             //definir la cabecera de las columnas
-            dataGrid.Columns.Add("colId", "id");
-            dataGrid.Columns.Add("colDescripcion", "Descripcion");
-            
+            dataGrid.Columns.Add("colId", "Id");
+            dataGrid.Columns.Add("colNombre", "Nombre");
+
+
+
+
 
             //definir la columna de tipo imagen para la edicion de la entidad
             DataGridViewImageColumn imgEdit = new DataGridViewImageColumn();
@@ -63,7 +59,7 @@ namespace Mantenimientos
                                              // imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom; //para que la imagen se ajuste
                                              //imgEstado.Width = 50;
             dataGrid.Columns.Add(imgEstado);//agregar la columna de tipo imagen al data grid
-            //ajusta el ancho de las columnas al datagrid
+                                            //ajusta el ancho de las columnas al datagrid
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //traer la lista de elementos para agregar el data grid
 
@@ -78,54 +74,26 @@ namespace Mantenimientos
 
             //Cargar el data grid con la lista secuencialmente
             //dataGridView1.Columns["colEstado"].DefaultCellStyle.BackColor = Color.LightBlue; //cambiar color a una columna especificada
-            foreach (MetodoDePago m in metPago)
+            foreach (CategoriaProducto ca in pro)
             {
 
-                if (m.Estado)
+                if (ca.Estado)
                 {
-                    dataGrid.Rows.Add(m.Id, m.Descripcion, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\eye.png"));
+                    dataGrid.Rows.Add(ca.Id, ca.Nombre, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\eye.png"));
                 }
                 else
                 {
-                    dataGrid.Rows.Add(m.Id,m.Descripcion, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\hidden.png"));
+                    dataGrid.Rows.Add(ca.Id, ca.Nombre, Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\pen.png"), Image.FromFile("C:\\Users\\elmen\\Desktop\\imagenes\\hidden.png"));
                 }
             }
 
         }
 
-        private void combo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String opcion = combo.SelectedItem.ToString();
 
-            if(opcion == "Activos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatosPorEstado(true));
-            }else if(opcion == "Inactivos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatosPorEstado(false));
-            }
-            else
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
-            }
-            
-        }
-
-        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        private void limpiar()
         {
-            String opcion = combo.SelectedItem.ToString();
-            if (opcion == "Activos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarMetPagoPorDescEstado(txtBusqueda.Text,true));
-            }
-            else if (opcion == "Inactivos")
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarMetPagoPorDescEstado(txtBusqueda.Text, false));
-            }
-            else
-            {
-                cargarDataGrid(repositorioDeMetodoDePago.buscarPorDescripcion(txtBusqueda.Text));
-            }
+            combo.SelectedIndex = 0;
+            txtBusqueda.Text = "";
         }
 
         private void _CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,13 +103,19 @@ namespace Mantenimientos
                 string valor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
                 // MessageBox.Show("Valor clickeado: " + dataGrid.Columns[e.ColumnIndex].HeaderText);
                 int id = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells["colId"].Value);
-                MetodoDePago metodo = repositorioDeMetodoDePago.buscarPorId(id);
-
+                CategoriaProducto categoria = repo.buscarPorId(id);
 
                 if (dataGrid.Columns[e.ColumnIndex].HeaderText == "Editar")
                 {
-                    FormMetPago metodoForm = new FormMetPago(metodo,this);
-                    metodoForm.ShowDialog();    
+                    FormCategoriaProducto form = new FormCategoriaProducto(this,categoria);
+                    form.ShowDialog();
+
+                    limpiar();
+                    dataGrid.ClearSelection();
+                    cargarDataGrid(repo.ObtenerDatos());
+                    dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                    dataGrid.CurrentCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
                 }
                 else if (dataGrid.Columns[e.ColumnIndex].HeaderText == "Estado")
                 {
@@ -156,32 +130,69 @@ namespace Mantenimientos
 
                     if (resultado == DialogResult.Yes)
                     {
-                        if (metodo.Estado)
+                        if (categoria.Estado)
                         {
-                            repositorioDeMetodoDePago.desahabilitar(metodo);
+                            repo.desahabilitar(categoria);
                         }
                         else
                         {
-                            repositorioDeMetodoDePago.habilitar(metodo);
+                            repo.habilitar(categoria);
                         }
-
-                        this.cargarDataGrid(repositorioDeMetodoDePago.ObtenerDatos());
                         //Dejar seleccionada la celda
+
                         dataGrid.ClearSelection();
+                        cargarDataGrid(repo.ObtenerDatos());
                         dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
                         dataGrid.CurrentCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
                     }
-
-
 
                 }
             }
         }
 
+        private void combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(combo.SelectedItem.ToString() == "Todo")
+            {
+
+                cargarDataGrid(repo.ObtenerDatos());
+
+            }else if(combo.SelectedItem.ToString() == "Activos")
+            {
+                cargarDataGrid(repo.listarPorEstado(true));
+            }
+            else if(combo.SelectedItem.ToString() == "Inactivos")
+            {
+                cargarDataGrid(repo.listarPorEstado(false));
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (combo.SelectedItem.ToString() == "Todo")
+            {
+
+                cargarDataGrid(repo.listarPorNombre(txtBusqueda.Text));
+
+            }
+            else if (combo.SelectedItem.ToString() == "Activos")
+            {
+                cargarDataGrid(repo.listarPorNombreYEstado(txtBusqueda.Text,true));
+            }
+            else if (combo.SelectedItem.ToString() == "Inactivos")
+            {
+                cargarDataGrid(repo.listarPorNombreYEstado(txtBusqueda.Text, false));
+            }
+
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormMetPago form = new FormMetPago(this);
+            FormCategoriaProducto form = new FormCategoriaProducto();
             form.ShowDialog();
+            cargarDataGrid(repo.ObtenerDatos());
+            limpiar();
         }
     }
 }

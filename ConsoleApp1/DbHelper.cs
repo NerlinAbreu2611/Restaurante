@@ -33,6 +33,7 @@ namespace ConsoleApp1
 
         }
 
+     
         public DataTable listar(string sql,T entidad, Action<SqlCommand,T> action = null) 
         { 
         using(SqlConnection con = new SqlConnection(conexion))
