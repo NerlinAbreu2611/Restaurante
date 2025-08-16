@@ -53,196 +53,241 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormCategoriaProducto.cs">
+    <Compile Include="Consulta\ConsultaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCategoriaProducto.Designer.cs">
+    <Compile Include="Consulta\ConsultaProducto.Designer.cs">
+      <DependentUpon>ConsultaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta\ConsultaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta\ConsultaProveedor.Designer.cs">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario_de_mantenimiento\FormCategoriaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario_de_mantenimiento\FormCategoriaProducto.Designer.cs">
       <DependentUpon>FormCategoriaProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCliente.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCliente.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormCliente.Designer.cs">
       <DependentUpon>FormCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCondicion.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormCondicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCondicion.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormCondicion.Designer.cs">
       <DependentUpon>FormCondicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEmpleado.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEmpleado.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormEmpleado.Designer.cs">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMesa.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormMesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMesa.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormMesa.Designer.cs">
       <DependentUpon>FormMesa.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMetPago.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormMetPago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMetPago.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormMetPago.Designer.cs">
       <DependentUpon>FormMetPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProducto.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProducto.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormProducto.Designer.cs">
       <DependentUpon>FormProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProveedor.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProveedor.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormProveedor.Designer.cs">
       <DependentUpon>FormProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUnidadDeMedida.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormUnidadDeMedida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUnidadDeMedida.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\FormUnidadDeMedida.Designer.cs">
       <DependentUpon>FormUnidadDeMedida.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_tipo_de_movimiento.cs">
+    <Compile Include="Formulario_de_mantenimiento\Form_tipo_de_movimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_tipo_de_movimiento.Designer.cs">
+    <Compile Include="Formulario_de_mantenimiento\Form_tipo_de_movimiento.Designer.cs">
       <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoCategoriaProducto.cs">
+    <Compile Include="Mantenimiento\MantenimientoCategoriaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoCategoriaProducto.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoCategoriaProducto.Designer.cs">
       <DependentUpon>MantenimientoCategoriaProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoProductos.cs">
+    <Compile Include="Mantenimiento\MantenimientoProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoProductos.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoProductos.Designer.cs">
       <DependentUpon>MantenimientoProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoUnidadDeMedida.cs">
+    <Compile Include="Mantenimiento\MantenimientoUnidadDeMedida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoUnidadDeMedida.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoUnidadDeMedida.Designer.cs">
       <DependentUpon>MantenimientoUnidadDeMedida.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenimiento.cs">
+    <Compile Include="Mantenimiento\Mantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenimiento.Designer.cs">
+    <Compile Include="Mantenimiento\Mantenimiento.Designer.cs">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoClientes.cs">
+    <Compile Include="Mantenimiento\MantenimientoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoClientes.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoClientes.Designer.cs">
       <DependentUpon>MantenimientoClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoCondicion.cs">
+    <Compile Include="Mantenimiento\MantenimientoCondicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoCondicion.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoCondicion.Designer.cs">
       <DependentUpon>MantenimientoCondicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoEmpleado.cs">
+    <Compile Include="Mantenimiento\MantenimientoEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoEmpleado.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoEmpleado.Designer.cs">
       <DependentUpon>MantenimientoEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoMesas.cs">
+    <Compile Include="Mantenimiento\MantenimientoMesas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoMesas.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoMesas.Designer.cs">
       <DependentUpon>MantenimientoMesas.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoMetodoDePago.cs">
+    <Compile Include="Mantenimiento\MantenimientoMetodoDePago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoMetodoDePago.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoMetodoDePago.Designer.cs">
       <DependentUpon>MantenimientoMetodoDePago.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoProveedor.cs">
+    <Compile Include="Mantenimiento\MantenimientoProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MantenimientoProveedor.Designer.cs">
+    <Compile Include="Mantenimiento\MantenimientoProveedor.Designer.cs">
       <DependentUpon>MantenimientoProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenimiento_tipo_de_movimiento.cs">
+    <Compile Include="Mantenimiento\Mantenimiento_tipo_de_movimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenimiento_tipo_de_movimiento.Designer.cs">
+    <Compile Include="Mantenimiento\Mantenimiento_tipo_de_movimiento.Designer.cs">
       <DependentUpon>Mantenimiento_tipo_de_movimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\FormOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\FormOrden.Designer.cs">
+      <DependentUpon>FormOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\MovimientoInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\MovimientoInventario.Designer.cs">
+      <DependentUpon>MovimientoInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormCategoriaProducto.resx">
+    <EmbeddedResource Include="Consulta\ConsultaProducto.resx">
+      <DependentUpon>ConsultaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta\ConsultaProveedor.resx">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormCategoriaProducto.resx">
       <DependentUpon>FormCategoriaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCliente.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormCliente.resx">
       <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCondicion.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormCondicion.resx">
       <DependentUpon>FormCondicion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEmpleado.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMesa.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormMesa.resx">
       <DependentUpon>FormMesa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMetPago.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormMetPago.resx">
       <DependentUpon>FormMetPago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProducto.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormProducto.resx">
       <DependentUpon>FormProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProveedor.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormProveedor.resx">
       <DependentUpon>FormProveedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUnidadDeMedida.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\FormUnidadDeMedida.resx">
       <DependentUpon>FormUnidadDeMedida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_tipo_de_movimiento.resx">
+    <EmbeddedResource Include="Formulario_de_mantenimiento\Form_tipo_de_movimiento.resx">
       <DependentUpon>Form_tipo_de_movimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoCategoriaProducto.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoCategoriaProducto.resx">
       <DependentUpon>MantenimientoCategoriaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoProductos.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoProductos.resx">
       <DependentUpon>MantenimientoProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoUnidadDeMedida.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoUnidadDeMedida.resx">
       <DependentUpon>MantenimientoUnidadDeMedida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mantenimiento.resx">
+    <EmbeddedResource Include="Mantenimiento\Mantenimiento.resx">
       <DependentUpon>Mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoClientes.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoClientes.resx">
       <DependentUpon>MantenimientoClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoCondicion.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoCondicion.resx">
       <DependentUpon>MantenimientoCondicion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoEmpleado.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoEmpleado.resx">
       <DependentUpon>MantenimientoEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoMesas.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoMesas.resx">
       <DependentUpon>MantenimientoMesas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoMetodoDePago.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoMetodoDePago.resx">
       <DependentUpon>MantenimientoMetodoDePago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoProveedor.resx">
+    <EmbeddedResource Include="Mantenimiento\MantenimientoProveedor.resx">
       <DependentUpon>MantenimientoProveedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mantenimiento_tipo_de_movimiento.resx">
+    <EmbeddedResource Include="Mantenimiento\Mantenimiento_tipo_de_movimiento.resx">
       <DependentUpon>Mantenimiento_tipo_de_movimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\FormOrden.resx">
+      <DependentUpon>FormOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\MovimientoInventario.resx">
+      <DependentUpon>MovimientoInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -273,5 +318,6 @@
       <Name>ConsoleApp1</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -508,13 +508,14 @@
             this.dpmProcesosRestaurante.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmProcesosRestaurante.Name = "dropDownMenu1";
             this.dpmProcesosRestaurante.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmProcesosRestaurante.Size = new System.Drawing.Size(137, 26);
+            this.dpmProcesosRestaurante.Size = new System.Drawing.Size(181, 48);
             // 
             // holaToolStripMenuItem
             // 
             this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
-            this.holaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.holaToolStripMenuItem.Text = "Facturacion";
+            this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
             // 
             // dpmMantenimientoRestaurante
             // 
@@ -557,7 +558,7 @@
             this.dpmMantenimientoInventario.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmMantenimientoInventario.Name = "dropDownMenu1";
             this.dpmMantenimientoInventario.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmMantenimientoInventario.Size = new System.Drawing.Size(188, 136);
+            this.dpmMantenimientoInventario.Size = new System.Drawing.Size(188, 114);
             // 
             // productosToolStripMenuItem
             // 
@@ -611,6 +612,7 @@
             this.registroDeMovimientoToolStripMenuItem.Name = "registroDeMovimientoToolStripMenuItem";
             this.registroDeMovimientoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.registroDeMovimientoToolStripMenuItem.Text = "Registro de Movimiento";
+            this.registroDeMovimientoToolStripMenuItem.Click += new System.EventHandler(this.registroDeMovimientoToolStripMenuItem_Click);
             // 
             // dpmReportesInventario
             // 

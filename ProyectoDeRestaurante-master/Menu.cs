@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using WindowsFormsApp2.componentes;
 using System.Runtime.InteropServices;
 using Mantenimientos;
+using Mantenimientos.Procesos;
 
 
 namespace WindowsFormsApp2
@@ -281,6 +282,16 @@ namespace WindowsFormsApp2
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             agregarFormulario(new MantenimientoProductos());
+        }
+
+        private void registroDeMovimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new MovimientoInventario());
+        }
+
+        private void holaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new Facturacion());
         }
     }
 }
