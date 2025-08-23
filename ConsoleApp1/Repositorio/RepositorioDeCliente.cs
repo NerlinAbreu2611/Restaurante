@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ConsoleApp1
 {
@@ -45,6 +46,16 @@ namespace ConsoleApp1
 
             return false;
         }
+
+
+        public List<Cliente> clientes_Con_Ordenes_Pendientes()
+        {
+           DbHelper<Cliente> db = new DbHelper<Cliente>();
+
+            string sql = "select c.id_cliente,c.nombre,c.telefono,c.email,c.direccion,c.id_condicion,\r\nc.estado from cliente as c\r\ninner join\r\n(select  c.id_cliente as 'id', count(c.id_cliente) as 'ordenes'\r\nfrom cliente as c\r\ninner join orden on c.id_cliente = orden.id_cliente\r\nwhere c.id_cliente <> 20 and orden.procesada <> 1\r\ngroup by c.id_cliente) as sub on sub.id = c.id_cliente;";
+            return listar( db.consultar(sql));
+        }
+
 
         public bool agregar(Cliente t)
         {
@@ -257,6 +268,26 @@ namespace ConsoleApp1
                     throw ex;
                 }
 
+
+            }
+            return clientes;
+        }
+
+        public List<Cliente> listar(DataTable dt)
+        {
+            List<Cliente> clientes = new List<Cliente>();   
+            foreach (DataRow fila in dt.Rows)
+            {
+                int id = Convert.ToInt32(fila["id_cliente"]);
+                string nombre = fila["nombre"].ToString();
+                string telefono = fila["telefono"].ToString();
+                string email = fila["email"].ToString();
+                string direccion = fila["direccion"].ToString();
+                int condicion = Convert.ToInt32(fila["id_condicion"]);
+                bool estado = Convert.ToBoolean(fila["estado"]);
+
+                Cliente cliente = new Cliente(id, nombre, telefono, email, direccion, condicion, estado);
+                clientes.Add(cliente);
 
             }
             return clientes;

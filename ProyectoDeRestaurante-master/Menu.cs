@@ -12,6 +12,7 @@ using WindowsFormsApp2.componentes;
 using System.Runtime.InteropServices;
 using Mantenimientos;
 using Mantenimientos.Procesos;
+using Mantenimientos.Consulta;
 
 
 namespace WindowsFormsApp2
@@ -174,6 +175,11 @@ namespace WindowsFormsApp2
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            foreach(FormOrden formOrden in formFactura.formOrdens)
+            {
+                formOrden.limpiar();
+            }
+
             Application.Exit();
         }
 
@@ -207,9 +213,12 @@ namespace WindowsFormsApp2
         private Form formularioHijo;
         private void agregarFormulario(Form formHijo)
         {
-            if(formularioHijo != null)
+            if(formularioHijo != null && !(formularioHijo is Facturacion))
             {
                 formularioHijo.Dispose();
+            }else if(formHijo is Facturacion)
+            {
+                formularioHijo = null;
             }
             //limpiar el panel
             panelPadre.Controls.Clear();
@@ -289,9 +298,21 @@ namespace WindowsFormsApp2
             agregarFormulario(new MovimientoInventario());
         }
 
+        private Facturacion formFactura = new Facturacion();
         private void holaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            agregarFormulario(new Facturacion());
+            formFactura.cargarProductos();
+            agregarFormulario(formFactura);
+        }
+
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new ConsultaProducto());
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            agregarFormulario(new FormPagos());
         }
     }
 }

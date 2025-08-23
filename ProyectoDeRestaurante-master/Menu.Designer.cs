@@ -508,12 +508,12 @@
             this.dpmProcesosRestaurante.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmProcesosRestaurante.Name = "dropDownMenu1";
             this.dpmProcesosRestaurante.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmProcesosRestaurante.Size = new System.Drawing.Size(181, 48);
+            this.dpmProcesosRestaurante.Size = new System.Drawing.Size(137, 26);
             // 
             // holaToolStripMenuItem
             // 
             this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
-            this.holaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.holaToolStripMenuItem.Text = "Facturacion";
             this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
             // 
@@ -684,13 +684,14 @@
             this.dpmProcesosCxC.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.dpmProcesosCxC.Name = "dpmProcesosCxC";
             this.dpmProcesosCxC.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.dpmProcesosCxC.Size = new System.Drawing.Size(174, 26);
+            this.dpmProcesosCxC.Size = new System.Drawing.Size(181, 48);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem6.Text = "Registros de pagos";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // dpmReportesCxC
             // 
@@ -748,6 +749,7 @@
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
             this.productosToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.productosToolStripMenuItem1.Text = "Productos";
+            this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem1_Click);
             // 
             // Menu
             // 

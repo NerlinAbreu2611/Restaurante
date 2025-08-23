@@ -22,7 +22,7 @@ namespace Mantenimientos.Procesos
         private void MovimientoInventario_Load(object sender, EventArgs e)
         {
 
-            repositorio_Tipo_Movimiento.ObtenerDatos().ForEach(r =>
+            repositorio_Tipo_Movimiento.ObtenerPorEstado(true).ForEach(r =>
             {
                 comboTipoDeMovimiento.Items.Add(r.Descripcion);
             });
@@ -194,8 +194,10 @@ namespace Mantenimientos.Procesos
                 indiceDeProducto = e.RowIndex;
                 if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Sumar")
                 {
+                    
                     cantidadAnterior = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["ColCantidad"].Value) + 1;
                     dataGridView1.Rows[e.RowIndex].Cells["ColCantidad"].Value = cantidadAnterior;
+                 
                 }
                 else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Restar")
                 {
@@ -334,7 +336,11 @@ namespace Mantenimientos.Procesos
             movimientos.Clear();
             proveedor = null;
             producto = null;
+            dataGridView1.CellStateChanged -= dataGridView1_CellStateChanged;
+            dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
             dataGridView1.Rows.Clear();
+            dataGridView1.CellStateChanged += dataGridView1_CellStateChanged;
+            dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
             txtDireccion.Clear();
             txtNombreProveedor.Clear();
             txtObservaciones.Clear();
@@ -391,9 +397,9 @@ namespace Mantenimientos.Procesos
         private void validarSalida()
         {
 
-
-            string nombre = dataGridView1.Rows[indiceDeProducto].Cells["ColProducto"].Value.ToString();
-            decimal cantidad = Convert.ToDecimal(dataGridView1.Rows[indiceDeProducto].Cells["ColCantidad"].Value);
+            int indice = dataGridView1.CurrentRow.Index;
+            string nombre = dataGridView1.Rows[indice].Cells["ColProducto"].Value.ToString();
+            decimal cantidad = Convert.ToDecimal(dataGridView1.Rows[indice].Cells["ColCantidad"].Value);
 
 
 
@@ -403,7 +409,7 @@ namespace Mantenimientos.Procesos
                 if (cantidad > p.Stock_actual)
                 {
                     MessageBox.Show(this, $"Error, la salida no puede superar el stock total {p.Stock_actual}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dataGridView1.Rows[indiceDeProducto].Cells["ColCantidad"].Value = p.Stock_actual - 1;
+                    dataGridView1.Rows[indice].Cells["ColCantidad"].Value = p.Stock_actual - 1;
                 }
 
             }

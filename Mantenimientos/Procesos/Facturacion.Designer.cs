@@ -202,6 +202,7 @@
             this.Controls.Add(this.label);
             this.Name = "Facturacion";
             this.Text = "Facturacion";
+            this.Load += new System.EventHandler(this.Facturacion_Load_1);
             this.Shown += new System.EventHandler(this.Facturacion_Shown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

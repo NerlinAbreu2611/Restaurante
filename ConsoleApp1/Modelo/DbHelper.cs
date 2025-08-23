@@ -30,7 +30,27 @@ namespace ConsoleApp1
 
         }
 
+        public decimal ejecutarEscalar(string sql)
+        {
+            using (SqlConnection con = new SqlConnection(conexion))
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            {
+                con.Open();
 
+                cmd.CommandText = sql;
+
+                Object resultado = cmd.ExecuteScalar(); 
+                if(resultado is DBNull)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return Convert.ToDecimal(resultado);
+                }
+            }
+
+        }
         public bool ejecutarTransaccion(List<string> sqls, List<Action<SqlCommand>> acciones)
         {
             // Validaciones previas
@@ -83,13 +103,16 @@ namespace ConsoleApp1
 
 
 
-        public DataTable consultar(string sql, SqlParameter[] parameters)
+        public DataTable consultar(string sql, SqlParameter[] parameters = null)
         {
             using (SqlConnection con = new SqlConnection(conexion))
             using (SqlCommand cmd = new SqlCommand(sql, con))
             {
                 con.Open();
-                cmd.Parameters.AddRange(parameters);
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);

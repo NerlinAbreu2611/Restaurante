@@ -14,6 +14,7 @@ namespace ConsoleApp1.Modelo
         private int id_empleado;
         private int id_condicion;
         private DateTime fecha_hora;
+        private DateTime fecha_vencimiento;
         private decimal total;
         private decimal saldo_pendiente;
         private bool procesada;
@@ -29,5 +30,6 @@ namespace ConsoleApp1.Modelo
         public decimal Saldo_pendiente { get => saldo_pendiente; set => saldo_pendiente = value; }
         public bool Procesada { get => procesada; set => procesada = value; }
         public bool Estado { get => estado; set => estado = value; }
+        public DateTime Fecha_vencimiento { get => fecha_vencimiento; set => fecha_vencimiento = value; }
     }
 }
